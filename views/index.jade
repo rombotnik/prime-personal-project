@@ -1,5 +1,79 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div.row
+        div.col-sm-12
+            div.well
+                div
+                    h1 Coffeemancers
+                div
+                    p
+                        em RATING:
+                        i.glyphicon.glyphicon-star
+                        i.glyphicon.glyphicon-star
+                        i.glyphicon.glyphicon-star
+                        i.glyphicon.glyphicon-star
+                        i.glyphicon.glyphicon-star
+                    p.lead This is a cool game with a cool description. It lets you be a wizard, drink coffee, and brew new spells. Will you be the classiest Coffeemancer ever, or do you prefer a little sugar in your drink?
+                div
+                    button.btn.btn-default.btn-lg PLAY NOW
+    div.row
+        div.col-sm-8
+            div.row
+                div.col-xs-3
+                    h2 Dashboard
+                    ul.list-unstyled
+                        li Currently Playing
+                        li Recent Notifications
+                        hr
+                        li My Games
+                        li Profile
+                        li Forums
+                        li Settings
+                div.col-xs-9
+                    h3 Currently Playing
+                    table.table.dashboard-table
+                        tr
+                            th Star Wars: Sith Edition
+                            td
+                                div.progress
+                                    div.progress-bar(style='width: 60%;')
+                            td
+                                button.btn.btn-default.btn-xs CONTINUE
+                        tr
+                            th Game of Thrones Lite
+                            td
+                                div.progress
+                                    div.progress-bar(style='width: 15%;')
+                            td
+                                button.btn.btn-default.btn-xs CONTINUE
+                        tr
+                            th Coffeemancers
+                            td
+                                div.progress
+                                    div.progress-bar(style='width: 100%;')
+                            td
+                                button.btn.btn-primary.btn-xs
+                                    i.glyphicon.glyphicon-repeat
+                                    |   REPLAY
+        div.col-sm-4
+            h3 Recent games
+            ul.list-group
+                li.list-group-item
+                    header.list-group-item-heading.header-subtitle.clearfix
+                        h4 Star Wars: Sith Edition
+                        em Just now
+                    section.list-group-item-text
+                        p Find your passion! Or channel your inner sadist. Anything is possible with the Dark Side.
+                    footer.header-subtitle.clearfix
+                        p Author: Rom
+                        button.btn.btn-sm.btn-default PLAY
+                li.list-group-item
+                    header.list-group-item-heading.header-subtitle.clearfix
+                        h4 Game of Thrones Lite
+                        em 20 min ago
+                    section.list-group-item-text
+                        p Red wedding? Check. Dragons? Check. Kingslaying? Check. We've got you covered.
+                    footer.header-subtitle.clearfix
+                        p Author: Rom
+                        button.btn.btn-sm.btn-default PLAY

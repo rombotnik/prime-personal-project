@@ -1,7 +1,13 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/styles/style.css')
-  body
-    block content
+    head
+        title= title
+        link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/assets/styles/style.css')
+        script(src='/assets/scripts/app.min.js')
+    body
+        nav.navbar.navbar-default.navbar-fixed-top
+            div.container
+                a.navbar-brand Harmony
+        main.container
+            block content
