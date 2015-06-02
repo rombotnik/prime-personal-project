@@ -1,0 +1,104 @@
+extends layout
+block content
+    div.row
+        div.col-sm-3
+            h2 Sidebar
+            ul.nav.nav-pills.nav-stacked
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown") Statistics (3)
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a Inventory
+                            a Main Character
+                            a Love Interest
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown") Scenes (24)
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a Scene 1
+                            a Scene 2
+                li
+                    a Relationships
+        div.col-sm-9
+            form
+                h1 Scene 1
+                div.form-group
+                    p
+                        input(type='checkbox')
+                        |  Has prerequisites
+                div.form-group
+                    label Title (Optional)
+                    input.form-control(type='text' value='A hipster argument' placeholder='Scene title')
+                div.form-group
+                    label Body
+                    textarea.form-control
+                        p "Food truck semiotics jean shorts asymmetrical, craft beer 3 wolf moon Kickstarter mixtape. Occupy Tumblr cardigan synth street art skateboard. Thundercats sriracha +1, High Life fashion axe mumblecore Schlitz. Vinyl small batch 8-bit bespoke, Wes Anderson Vice cred Banksy actually.
+                        p "Blog stumptown ugh flannel pork belly, roof party Brooklyn beard Blue Bottle semiotics Intelligentsia chia pickled trust fund. YOLO tofu High Life, selvage Portland vegan salvia. Forage gastropub Brooklyn Etsy, street art typewriter fap photo booth scenester DIY heirloom whatever fanny pack viral.
+                        p "Disrupt pork belly put a bird on it PBR&B, Godard master cleanse American Apparel viral retro forage quinoa taxidermy flexitarian semiotics. Schlitz selfies banjo slow-carb, art party selvage post-ironic Neutra Marfa synth Banksy meggings. Sartorial gluten-free wolf, biodiesel food truck yr Marfa skateboard Intelligentsia stumptown deep v Helvetica letterpress paleo you probably haven't heard of them. Single-origin coffee brunch banh mi, trust fund mustache flexitarian bespoke.
+                        p "Cold-pressed flannel Marfa, four dollar toast retro locavore cliche Intelligentsia iPhone vegan mustache kitsch health goth. Gentrify Neutra selvage, sartorial fashion axe bicycle rights literally American Apparel meditation chillwave twee Vice health goth fingerstache brunch. Sriracha health goth before they sold out cronut, viral slow-carb lo-fi tattooed."
+                        p
+                            strong What do you say in response?
+                h2 Choices
+                h3 Choice 1
+                div.well.well-sm
+                    div.form-group.form-group-sm
+                        p
+                            label Display text
+                            input.form-control(type='text' value='"Ugh."' placeholder='Display text')
+                        p
+                            label Leads to:
+                            select.form-control
+                                option Scene 2 (Apartment)
+                                option Scene 3 (Early morning coffee)
+                                option Scene 4 (Late night rendezvous)
+                        p
+                            input(type='checkbox')
+                            |  Has prerequisites
+                        p
+                            input(type='checkbox')
+                            |  Changes a statistic
+
+                h3 Choice 2
+                div.well.well-sm
+                    div.form-group.form-group-sm
+                        p
+                            label Display text
+                            input.form-control(type='text' value='"I liked them before they were cool."' placeholder='Display text')
+                        p
+                            label Leads to:
+                            select.form-control
+                                option Scene 2 (Apartment)
+                                option Scene 3 (Early morning coffee)
+                                option Scene 4 (Late night rendezvous)
+                        p
+                            input(type='checkbox')
+                            |  Has prerequisites
+                        p
+                            input(type='checkbox' checked)
+                            |  Changes a statistic
+
+                h3 Choice 3
+                div.well.well-sm
+                    div.form-group.form-group-sm
+                        p
+                            label Choice 3
+                            input.form-control(type='text' value='"You probably wouldn\'t recognize it."' placeholder='Display text')
+                        p
+                            label Leads to:
+                            select.form-control
+                                option Scene 2 (Apartment)
+                                option Scene 3 (Early morning coffee)
+                                option Scene 4 (Late night rendezvous)
+                        p
+                            input(type='checkbox')
+                            |  Has prerequisites
+                        p
+                            input(type='checkbox')
+                            |  Changes a statistic
+
+                div.form-group.form-group-sm
+                    button.btn.btn-primary
+                        i.glyphicon.glyphicon-plus
+                        |  Add another choice
