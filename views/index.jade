@@ -14,7 +14,7 @@ block content
                         i.glyphicon.glyphicon-star
                         i.glyphicon.glyphicon-star
                         i.glyphicon.glyphicon-star
-                    p.lead This is a cool game with a cool description. It lets you be a wizard, drink coffee, and brew new spells. Will you be the classiest Coffeemancer ever, or do you prefer a little sugar in your drink?
+                    p.lead This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
                 div
                     button.btn.btn-default.btn-lg PLAY NOW
     div.row
@@ -22,16 +22,29 @@ block content
             div.row
                 div.col-xs-3
                     h2 Dashboard
-                    ul.list-unstyled
-                        li Currently Playing
-                        li Recent Notifications
-                        hr
-                        li My Games
-                        li Profile
-                        li Forums
-                        li Settings
+                    ul.nav.nav-pills.nav-stacked
+                        li
+                            a
+                                i.glyphicon.glyphicon-play-circle
+                                |  Currently Playing
+                        li
+                            a
+                                i.glyphicon.glyphicon-th-list
+                                |  My Games
+                        li
+                            a
+                                i.glyphicon.glyphicon-user
+                                |  Profile
+                        li
+                            a
+                                i.glyphicon.glyphicon-comment
+                                |  Forums
+                        li
+                            a
+                                i.glyphicon.glyphicon-cog
+                                |  Settings
                 div.col-xs-9
-                    h3 Currently Playing
+                    h3 Recent Games
                     table.table.dashboard-table
                         tr
                             th Star Wars: Sith Edition
@@ -47,6 +60,8 @@ block content
                                     div.progress-bar(style='width: 15%;')
                             td
                                 button.btn.btn-default.btn-xs CONTINUE
+                    h3 History
+                    table.table.dashboard-table
                         tr
                             th Coffeemancers
                             td
