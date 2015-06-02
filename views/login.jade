@@ -1,0 +1,20 @@
+extends layout
+block content
+    div.row
+        div.col-sm-4.col-sm-offset-4
+            form
+                h1 Welcome back.
+                div.form-group
+                    label Username
+                    input.form-control(type='text' placeholder='Username' required)
+                div.form-group
+                    label Password
+                    input.form-control(type='password' placeholder='Password' required)
+                p
+                    input(type='checkbox')
+                    |  Remember me
+                ul.list-inline
+                    li
+                        button.btn.btn-default LOG IN
+                    li
+                        a.btn.btn-primary.btn-sm(href='/users/register') REGISTER
