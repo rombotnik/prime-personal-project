@@ -1,26 +1,27 @@
 extends layout
 block content
-   div.row
-      div.col-sm-4.col-sm-offset-4
-         form
-            h1 Hi there.
-            div.form-group
-               label Username
-               input.form-control(type='text' placeholder='Username' required)
-            div.form-group
-               label Password
-               input.form-control(type='password' placeholder='Password' required)
-            div.form-group
-               label E-mail
-               input.form-control(type='email' placeholder='E-mail' required)
-            p
-               input(type='checkbox' required)
-               |  I am 13 years or older
-            p
-               input(type='checkbox' required)
-               |  I agree to the Terms of Service
-            ul.list-inline
-               li
-                  button.btn.btn-default REGISTER
-               li
-                  a.btn.btn-primary.btn-sm(href='/users/login') GO BACK
+    main.container
+        div.row
+            div.col-sm-4.col-sm-offset-4
+                form
+                    h1 Hi there.
+                    div.form-group
+                        label Username
+                        input.form-control(type='text' placeholder='Username' required)
+                    div.form-group
+                        label Password
+                        input.form-control(type='password' placeholder='Password' required)
+                    div.form-group
+                        label E-mail
+                        input.form-control(type='email' placeholder='E-mail' required)
+                    p
+                        input(type='checkbox' required)
+                        |  I am 13 years or older
+                    p
+                        input(type='checkbox' required)
+                        |  I agree to the Terms of Service
+                    ul.list-inline
+                        li
+                            button.btn.btn-default REGISTER
+                        li
+                            a.btn.btn-primary.btn-sm(href='/users/login') GO BACK

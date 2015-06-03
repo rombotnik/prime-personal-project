@@ -1,71 +1,72 @@
 extends layout
 
 block content
-    div.row
-        div.col-sm-12
-            div.well
-                div
-                    h1 Coffeemancers
-                div
-                    p
-                        em RATING:
-                        i.glyphicon.glyphicon-star
-                        i.glyphicon.glyphicon-star
-                        i.glyphicon.glyphicon-star
-                        i.glyphicon.glyphicon-star
-                        i.glyphicon.glyphicon-star
-                    p.lead This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
-                div
-                    button.btn.btn-default.btn-lg PLAY NOW
-    div.row
-        div.col-sm-3
-            h2 Dashboard
-            ul.nav.nav-pills.nav-stacked
-                li
-                    a
-                        i.glyphicon.glyphicon-play-circle
-                        |  Currently Playing
-                li
-                    a
-                        i.glyphicon.glyphicon-th-list
-                        |  My Games
-                li
-                    a
-                        i.glyphicon.glyphicon-user
-                        |  Profile
-                li
-                    a
-                        i.glyphicon.glyphicon-comment
-                        |  Forums
-                li
-                    a
-                        i.glyphicon.glyphicon-cog
-                        |  Settings
-        div.col-sm-9
-            h3 Recent Games
-            table.table.dashboard-table
-                tr
-                    th Star Wars: Sith Edition
-                    td
-                        div.progress
-                            div.progress-bar(style='width: 60%;')
-                    td
-                        button.btn.btn-default.btn-xs CONTINUE
-                tr
-                    th Game of Thrones Lite
-                    td
-                        div.progress
-                            div.progress-bar(style='width: 15%;')
-                    td
-                        button.btn.btn-default.btn-xs CONTINUE
-            h3 History
-            table.table.dashboard-table
-                tr
-                    th Coffeemancers
-                    td
-                        div.progress
-                            div.progress-bar(style='width: 100%;')
-                    td
-                        button.btn.btn-primary.btn-xs
-                            i.glyphicon.glyphicon-repeat
-                            |   REPLAY
+    main.container
+        div.row
+            div.col-sm-12
+                div.well
+                    div
+                        h1 Coffeemancers
+                    div
+                        p
+                            em RATING:
+                            i.glyphicon.glyphicon-star
+                            i.glyphicon.glyphicon-star
+                            i.glyphicon.glyphicon-star
+                            i.glyphicon.glyphicon-star
+                            i.glyphicon.glyphicon-star
+                        p.lead This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
+                    div
+                        button.btn.btn-default.btn-lg PLAY NOW
+        div.row
+            div.col-sm-3
+                h2 Dashboard
+                ul.nav.nav-pills.nav-stacked
+                    li
+                        a
+                            i.glyphicon.glyphicon-play-circle
+                            |  Currently Playing
+                    li
+                        a
+                            i.glyphicon.glyphicon-th-list
+                            |  My Games
+                    li
+                        a
+                            i.glyphicon.glyphicon-user
+                            |  Profile
+                    li
+                        a
+                            i.glyphicon.glyphicon-comment
+                            |  Forums
+                    li
+                        a
+                            i.glyphicon.glyphicon-cog
+                            |  Settings
+            div.col-sm-9
+                h3 Recent Games
+                table.table.dashboard-table
+                    tr
+                        th Star Wars: Sith Edition
+                        td
+                            div.progress
+                                div.progress-bar(style='width: 60%;')
+                        td
+                            button.btn.btn-default.btn-xs CONTINUE
+                    tr
+                        th Game of Thrones Lite
+                        td
+                            div.progress
+                                div.progress-bar(style='width: 15%;')
+                        td
+                            button.btn.btn-default.btn-xs CONTINUE
+                h3 History
+                table.table.dashboard-table
+                    tr
+                        th Coffeemancers
+                        td
+                            div.progress
+                                div.progress-bar(style='width: 100%;')
+                        td
+                            button.btn.btn-primary.btn-xs
+                                i.glyphicon.glyphicon-repeat
+                                |   REPLAY

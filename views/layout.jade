@@ -1,9 +1,10 @@
 doctype html
-html
+html(ng-app='app')
     head
         title= title
         link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/assets/styles/style.css')
+        script(src='/vendor/angular/angular.min.js')
         script(src='/assets/scripts/app.min.js')
     body
         nav.navbar.navbar-default.navbar-static-top
@@ -21,5 +22,4 @@ html
                         a(href='/profile') Profile
                     li
                         a(href='/users/login') Log Out
-        main.container
-            block content
+        block content
