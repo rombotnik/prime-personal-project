@@ -32,3 +32,16 @@ app.controller('PlayController', ['$scope', '$http', function($scope, $http){
 
     $scope.getScene(7);
 }]);
+
+app.controller('EditController', ['$scope', '$http', function($scope, $http){
+    $scope.scene = {};
+
+    $scope.getScene = function(id) {
+        $http.get('/edit/scene/' + id).success(function(data){
+            console.log(data);
+            $scope.scene = data;
+        });
+    };
+
+    $scope.getScene(9);
+}]);
