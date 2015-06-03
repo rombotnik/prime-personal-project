@@ -1,98 +1,99 @@
 extends layout
 block content
-    div.row
-        div.col-sm-3
-            h2 Sidebar
-            form
-                div.input-group
-                    input.form-control(type='text' placeholder='Search for...')
-                    span.input-group-btn
-                        button.btn.btn-primary
-                            i.glyphicon.glyphicon-search
-                h3 Filter by...
-                div.form-group
-                    label Category
-                    select.form-control
-                        option All
-                        option CYOA
-                        option Dating Sim
-                        option Misc / Other
-                div.form-group
-                    label Genres
-                    p
-                        input(type='checkbox')
-                        |  All
-                    p
-                        input(type='checkbox')
-                        |  Adventure
-                    p
-                        input(type='checkbox')
-                        |  Drama
-                    p
-                        input(type='checkbox')
-                        |  Fantasy
-                    p
-                        input(type='checkbox')
-                        |  Horror
-                    p
-                        input(type='checkbox')
-                        |  Romance
-                    p
-                        input(type='checkbox')
-                        |  Sci-fi
-                    p
-                        input(type='checkbox')
-                        |  Misc / Other
-        div.col-sm-9
-            h2 Results
-            p 3 games found that matched search criteria.
-            div.row
-                div.col-sm-6
-                    div.panel.panel-default
-                        div.panel-heading
-                            h3 Coffeemancers
-                        div.panel-body
-                            h4 Info
-                            ul.list-unstyled
-                                li Author: Rom
-                                li Rating: 5/5
-                                li Updated: May 20, 2015
-                            h4 Description
-                            p This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
-                        div.panel-footer
-                            button.btn.btn-default PLAY NOW
+    main.container
+        div.row
+            div.col-sm-3
+                h2 Sidebar
+                form
+                    div.input-group
+                        input.form-control(type='text' placeholder='Search for...')
+                        span.input-group-btn
+                            button.btn.btn-primary
+                                i.glyphicon.glyphicon-search
+                    h3 Filter by...
+                    div.form-group
+                        label Category
+                        select.form-control
+                            option All
+                            option CYOA
+                            option Dating Sim
+                            option Misc / Other
+                    div.form-group
+                        label Genres
+                        p
+                            input(type='checkbox')
+                            |  All
+                        p
+                            input(type='checkbox')
+                            |  Adventure
+                        p
+                            input(type='checkbox')
+                            |  Drama
+                        p
+                            input(type='checkbox')
+                            |  Fantasy
+                        p
+                            input(type='checkbox')
+                            |  Horror
+                        p
+                            input(type='checkbox')
+                            |  Romance
+                        p
+                            input(type='checkbox')
+                            |  Sci-fi
+                        p
+                            input(type='checkbox')
+                            |  Misc / Other
+            div.col-sm-9
+                h2 Results
+                p 3 games found that matched search criteria.
+                div.row
+                    div.col-sm-6
+                        div.panel.panel-default
+                            div.panel-heading
+                                h3 Coffeemancers
+                            div.panel-body
+                                h4 Info
+                                ul.list-unstyled
+                                    li Author: Rom
+                                    li Rating: 5/5
+                                    li Updated: May 20, 2015
+                                h4 Description
+                                p This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
+                            div.panel-footer
+                                button.btn.btn-default PLAY NOW
 
-                div.col-sm-6
-                    div.panel.panel-default
-                        div.panel-heading
-                            h3 Star Wars: Sith Edition
-                        div.panel-body
-                            h4 Info
-                            ul.list-unstyled
-                                li Author: Rom
-                                li Rating: 4/5
-                                li Updated: Today
-                            h4 Description
-                            p Find your passion! Or channel your inner sadist. Anything is possible with the Dark Side.
-                        div.panel-footer
-                            ul.list-inline
-                                li
-                                    button.btn.btn-default RESUME
-                                li
-                                    button.btn.btn-primary.btn-sm RESTART
+                    div.col-sm-6
+                        div.panel.panel-default
+                            div.panel-heading
+                                h3 Star Wars: Sith Edition
+                            div.panel-body
+                                h4 Info
+                                ul.list-unstyled
+                                    li Author: Rom
+                                    li Rating: 4/5
+                                    li Updated: Today
+                                h4 Description
+                                p Find your passion! Or channel your inner sadist. Anything is possible with the Dark Side.
+                            div.panel-footer
+                                ul.list-inline
+                                    li
+                                        button.btn.btn-default RESUME
+                                    li
+                                        button.btn.btn-primary.btn-sm RESTART
 
-            div.row
-                div.col-sm-6
-                    div.panel.panel-default
-                        div.panel-heading
-                            h3 Game of Thrones Lite
-                        div.panel-body
-                            h4 Info
-                            ul.list-unstyled
-                                li Author: Rom
-                                li Rating: 5/5
-                                li Updated: May 29, 2015
-                            h4 Description
-                            p Red wedding? Check. Dragons? Check. Kingslaying? Check. We've got you covered.
-                        div.panel-footer
-                            button.btn.btn-default PLAY NOW
+                div.row
+                    div.col-sm-6
+                        div.panel.panel-default
+                            div.panel-heading
+                                h3 Game of Thrones Lite
+                            div.panel-body
+                                h4 Info
+                                ul.list-unstyled
+                                    li Author: Rom
+                                    li Rating: 5/5
+                                    li Updated: May 29, 2015
+                                h4 Description
+                                p Red wedding? Check. Dragons? Check. Kingslaying? Check. We've got you covered.
+                            div.panel-footer
+                                button.btn.btn-default PLAY NOW
