@@ -36,6 +36,15 @@ var getData = function(scene, cb) {
     });
 };
 
+var imp = {
+    onSceneRead: function(err, data){
+        // implementation
+    },
+    onDataReceived: function(s){
+        // more stuff
+    }
+};
+
 // Gets a scene and associated choices by ID
 var getScene = function(id, cb) {
     var scene;
@@ -93,7 +102,7 @@ var makeChoice = function(id, cb) {
 /*          Router Functions          */
 
 router.get('/', function(req, res, next) {
-    res.render('play', { title: 'Harmony | Play' });
+    res.render('play', { title: 'Play' });
 });
 
 router.get('/scene/*', function(req, res, next) {
@@ -111,8 +120,8 @@ router.get('/scene/*', function(req, res, next) {
     }
 });
 
-router.post('/choice/*', function(req, res, next){
-    makeChoice(req.params[0], function(data){
+router.post('/choice/:id', function(req, res, next){
+    makeChoice(req.params.id, function(data){
         // Send down the ID of the next scene after processing the choice
         res.send(data);
     });

@@ -1,9 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400|Montserrat);
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background: #1F1320 url(../images/sky-sunset-night-space.jpeg) no-repeat;
+  background-size: 100%;
+  background-position: center top;
+  min-height: 100%;
+  color: #eedecb;
+}
+
+h1, h2, h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: #ff6f8a;
+}
+
+h2, h3 {
+  color: #ff7b6d;
+}
+
 img {
   max-width: 100%;
 }
 
+*:focus, *:active {
+  outline-color: #ff6f8a !important;
+}
+
+a {
+  color: #ff6f8a;
+}
+
+a:hover, a:focus {
+  color: #ff4575;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ff6f8a;
+}
+
+.progress-bar {
+  background-color: #ff6f8a;
+}
+
+.btn-primary {
+  background-color: #ff6f8a;
+  border: 1px solid #771840;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #bc3f55;
+  border: 1px solid #771840;
+}
+
+.form-control {
+  background: rgba(0, 0, 0, .5);
+  color: #eedecb;
+  border: none;
+}
+
 .img-rounded {
-  border: 1px solid #212121;
+  border: 1px solid #120913;
   border-radius: 3px;
 }
 
@@ -21,4 +82,57 @@ img {
 
 .dashboard-table tr th {
   width: 33%;
+}
+
+/*      Modules     */
+
+.navbar-default {
+  background: rgba(0, 0, 0, .3);
+  border: none;
+}
+
+.navbar-default .navbar-brand {
+  color: #ae4b5e;
+  font-family: Montserrat, sans-serif;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #ae544a;
+  font-family: Montserrat, sans-serif;
+}
+
+.well, .panel {
+  background: rgba(0, 0, 0, .5);
+  border: #000 solid 1px;
+}
+
+.panel-default>.panel-heading, .panel-default>.panel-footer {
+  background: rgba(0, 0, 0, .2);
+  border: none;
+}
+
+.table {
+  background: rgba(0, 0, 0, .5);
+}
+
+.table>tbody>tr>th, .table>tbody>tr>td {
+  border-top: 1px #777 solid;
+}
+
+.nav-pills>li>a {
+  background: rgba(0, 0, 0, .3);
+}
+
+.nav-pills>li:hover, .nav-pills>li:focus {
+  background: none;
+}
+
+.nav-pills>li>a:hover, .nav-pills>li>a:focus {
+  background: rgba(0, 0, 0, .5);
+}
+
+.scene-content {
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, .3);
+  padding: 20px;
 }

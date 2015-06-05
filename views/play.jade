@@ -24,8 +24,8 @@ block content
                             |  Current Scene
             div.col-sm-9
                 h1 {{scene.title}}
-                div {{scene.content}}
+                div.scene-content {{scene.content}}
                 footer.well.well-sm
                     ul.list-inline
                         li(ng-repeat='choice in scene.choices')
-                            button.btn.btn-default.btn-sm(ng-click='continue(choice)') {{choice.title}}
+                            button.btn.btn-primary.btn-sm(ng-click='continue(choice)') {{choice.title}}

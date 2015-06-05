@@ -27,7 +27,7 @@ var getScene = function(id, cb) {
 
 // GET scene
 router.get('/', function(req, res, next) {
-    res.render('edit', { title: 'Harmony | Edit' });
+    res.render('edit', { title: 'Edit' });
 });
 
 // GET scene
