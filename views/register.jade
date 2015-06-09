@@ -3,17 +3,17 @@ block content
     main.container
         div.row
             div.col-sm-4.col-sm-offset-4
-                form
+                form(method='post' action='/users/register')
                     h1 Hi there.
                     div.form-group
                         label Username
-                        input.form-control(type='text' placeholder='Username' required)
+                        input.form-control(type='text' placeholder='Username' name='username' required)
                     div.form-group
                         label Password
-                        input.form-control(type='password' placeholder='Password' required)
+                        input.form-control(type='password' placeholder='Password' name='password' required)
                     div.form-group
                         label E-mail
-                        input.form-control(type='email' placeholder='E-mail' required)
+                        input.form-control(type='email' placeholder='E-mail' name='email' required)
                     p
                         input(type='checkbox' required)
                         |  I am 13 years or older
@@ -22,6 +22,6 @@ block content
                         |  I agree to the Terms of Service
                     ul.list-inline
                         li
-                            button.btn.btn-primary REGISTER
+                            input(type='submit' value='REGISTER').btn.btn-primary
                         li
                             a.btn.btn-default.btn-sm(href='/users/login') GO BACK

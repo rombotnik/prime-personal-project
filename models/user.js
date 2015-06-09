@@ -17,6 +17,7 @@ user.schema = {
 };
 
 user.setUniqueKey('username');
-user.compose(game, 'games', 'PLAYED', {many: true});
+//user.compose(game, 'games', 'PLAYED', {many: true});
+//user.compose(game, 'currentGame', 'PLAYING');
 
 module.exports = user;

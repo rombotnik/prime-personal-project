@@ -3,19 +3,19 @@ block content
     main.container
         div.row
             div.col-sm-4.col-sm-offset-4
-                form
+                form(method='post' action='/users/login')
                     h1 Welcome back.
                     div.form-group
                         label Username
-                        input.form-control(type='text' placeholder='Username' required)
+                        input.form-control(type='text' name='username' placeholder='Username' required)
                     div.form-group
                         label Password
-                        input.form-control(type='password' placeholder='Password' required)
+                        input.form-control(type='password' name='password' placeholder='Password' required)
                     p
                         input(type='checkbox')
                         |  Remember me
                     ul.list-inline
                         li
-                            button.btn.btn-primary LOG IN
+                            input(type='submit' value='LOG IN').btn.btn-primary
                         li
                             a.btn.btn-default.btn-sm(href='/users/register') REGISTER

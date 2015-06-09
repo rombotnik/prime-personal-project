@@ -11,33 +11,33 @@ body {
 h1, h2, h3 {
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  color: #f44336; }
+  color: #ff5722; }
 
 h2, h3 {
-  color: #f32c1e; }
+  color: #ff4408; }
 
 img {
   max-width: 100%; }
 
 *:focus, *:active {
-  outline-color: #ff1744 !important; }
+  outline-color: #bf360c !important; }
 
 a {
-  color: #ff1744; }
+  color: #bf360c; }
 
 a:hover, a:focus {
-  color: #fc0031; }
+  color: #a72f0a; }
 
 .progress-bar {
-  background-color: #f44336; }
+  background-color: #ff5722; }
 
 .btn-primary {
-  background-color: #f44336;
-  border: 1px solid #ea1c0d; }
+  background-color: #ff5722;
+  border: 1px solid #ee3900; }
 
 .btn-primary:hover, .btn-primary:focus {
-  background-color: #ea1c0d;
-  border: 1px solid #d2190b; }
+  background-color: #ee3900;
+  border: 1px solid #d43300; }
 
 .form-control {
   background: rgba(0, 0, 0, 0.5);
@@ -66,15 +66,15 @@ a:hover, a:focus {
   border: none; }
 
 .navbar-default .navbar-brand {
-  color: #f44336;
+  color: #ff5722;
   font-family: Montserrat, sans-serif; }
 
 .navbar-default .navbar-nav > li > a {
-  color: #ff1744;
+  color: #bf360c;
   font-family: Montserrat, sans-serif; }
 
 .well, .panel {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   border: #212121 solid 1px; }
 
 .panel-default > .panel-heading, .panel-default > .panel-footer {
