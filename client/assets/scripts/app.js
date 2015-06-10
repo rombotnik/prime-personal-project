@@ -45,3 +45,16 @@ app.controller('EditController', ['$scope', '$http', function($scope, $http){
 
     $scope.getScene(9);
 }]);
+
+app.controller('BrowseController', ['$scope', '$http', function($scope, $http){
+    $scope.games = [];
+
+    $scope.getGames = function() {
+        $http.get('/browse/games').success(function(data){
+            console.log(data);
+            $scope.games = data;
+        });
+    };
+
+    $scope.getGames();
+}]);

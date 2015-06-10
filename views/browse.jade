@@ -1,6 +1,6 @@
 extends layout
 block content
-    main.container
+    main(ng-controller='BrowseController').container
         div.row
             div.col-sm-3
                 h2 Sidebar
@@ -18,82 +18,47 @@ block content
                             option CYOA
                             option Dating Sim
                             option Misc / Other
-                    div.form-group
-                        label Genres
-                        p
-                            input(type='checkbox')
-                            |  All
-                        p
-                            input(type='checkbox')
-                            |  Adventure
-                        p
-                            input(type='checkbox')
-                            |  Drama
-                        p
-                            input(type='checkbox')
-                            |  Fantasy
-                        p
-                            input(type='checkbox')
-                            |  Horror
-                        p
-                            input(type='checkbox')
-                            |  Romance
-                        p
-                            input(type='checkbox')
-                            |  Sci-fi
-                        p
-                            input(type='checkbox')
-                            |  Misc / Other
+                    //div.form-group
+                    //    label Genres
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  All
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Adventure
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Drama
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Fantasy
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Horror
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Romance
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Sci-fi
+                    //    p
+                    //        input(type='checkbox')
+                    //        |  Misc / Other
             div.col-sm-9
                 h2 Results
-                p 3 games found that matched search criteria.
+                p Total games found: {{games.length}}
                 div.row
-                    div.col-sm-6
+                    div(ng-repeat='game in games').col-sm-6
                         div.panel.panel-default
                             div.panel-heading
-                                h3 Coffeemancers
+                                h3 {{game.title}}
+                                p {{game.category}}
                             div.panel-body
                                 h4 Info
                                 ul.list-unstyled
-                                    li Author: Rom
-                                    li Rating: 5/5
-                                    li Updated: May 20, 2015
+                                    li Author: {{game.author}}
+                                    li Rating: {{game.rating}} / 5
                                 h4 Description
-                                p This is a cool game with a cool description. It lets you be a hipster, drink coffee, and brew your own edgy post-postmodern commentary. Can you become the greatest hipster?
-                            div.panel-footer
-                                button.btn.btn-primary PLAY NOW
-
-                    div.col-sm-6
-                        div.panel.panel-default
-                            div.panel-heading
-                                h3 Star Wars: Sith Edition
-                            div.panel-body
-                                h4 Info
-                                ul.list-unstyled
-                                    li Author: Rom
-                                    li Rating: 4/5
-                                    li Updated: Today
-                                h4 Description
-                                p Find your passion! Or channel your inner sadist. Anything is possible with the Dark Side.
-                            div.panel-footer
-                                ul.list-inline
-                                    li
-                                        button.btn.btn-primary RESUME
-                                    li
-                                        button.btn.btn-default.btn-sm RESTART
-
-                div.row
-                    div.col-sm-6
-                        div.panel.panel-default
-                            div.panel-heading
-                                h3 Game of Thrones Lite
-                            div.panel-body
-                                h4 Info
-                                ul.list-unstyled
-                                    li Author: Rom
-                                    li Rating: 5/5
-                                    li Updated: May 29, 2015
-                                h4 Description
-                                p Red wedding? Check. Dragons? Check. Kingslaying? Check. We've got you covered.
+                                p {{game.description}}
                             div.panel-footer
                                 button.btn.btn-primary PLAY NOW
