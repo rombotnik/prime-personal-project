@@ -10,7 +10,6 @@ router.get('/login', function (req, res, next) {
 
 router.get('/me', function (req, res, next) {
     if (req.isAuthenticated()) {
-        console.log(req.user);
         res.send(req.user);
     } else {
         res.redirect('/users/login');
@@ -22,12 +21,11 @@ router.get('/register', function (req, res, next) {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/play',
     failureRedirect: '/login'})
 );
 
 router.post('/register', function (req, res, next) {
-    console.log(req.body);
     // Hash and save password
     bcrypt.genSalt(10, function(err, salt){
         if (err) return next(err);
@@ -38,7 +36,7 @@ router.post('/register', function (req, res, next) {
             User.save({username: req.body.username, password: req.body.password, email: req.body.email}, function(err, node){
                 if (err) return next(err);
                 console.log('Created new user: ', node.username);
-                res.send(node);
+                res.redirect('/users/login');
             });
         });
     });

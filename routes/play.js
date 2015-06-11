@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var seraphUrl = require('url').parse('http://app37253375:kxv7jzEcAWTYeLyyzuqs@app37253375.sb05.stations.graphenedb.com:24789');
+var seraphUrl = require('url').parse('http://app37458637:gp9yfrsaA1uQD6a5pMZm@app37458637.sb05.stations.graphenedb.com:24789');
 var db = require("seraph")({
     server: seraphUrl.protocol + '//' + seraphUrl.host,
     user: seraphUrl.auth.split(':')[0],
@@ -14,27 +14,27 @@ var User = require('../models/user');
 /*          Game-specific Functions          */
 
 // Gets data for a scene based on the references it makes to other variables
-var getData = function(scene, cb) {
-    db.relationships(scene.id, 'out', 'REFERENCES', function(err, rels){
-        if (err) throw err;
+var getData = function(scene, user, cb) {
+    console.log("Getting data for scene", scene);
+    console.log("Scene user data", user);
+    console.log("Scene statistics", scene.statistics);
+
+    if (scene.statistics) {
         var processed = 0;
-        if (rels.length == 0) {
-            cb(scene);
-        }
-        else {
-            rels.forEach(function (rel) {
-                db.read(rel.end, function (err, node) {
-                    // Gets the value of a variable by its name, then replaces occurrences of [[variable]] in scene text
-                    // with the RELATIONSHIP'S property of that same name
-                    scene.content = scene.content.replace('[[' + node.name + ']]', rel.properties[node.value]);
-                    processed++;
-                    if (processed == rels.length) {
-                        cb(scene);
-                    }
-                });
-            });
-        }
-    });
+        scene.statistics.forEach(function(stat) {
+            // Get user's value for the variable
+            var userValue = user.currentGame._rel[stat.name];
+            // Replace scene text
+            scene.content = scene.content.replace('[[' + stat.name + ']]', stat._rel[userValue]);
+            processed++;
+            // Check if it's time to send the data back
+            if (processed == scene.statistics.length) {
+                cb(scene);
+            }
+        })
+    } else {
+        cb(scene);
+    }
 };
 
 var imp = {
@@ -47,20 +47,31 @@ var imp = {
 };
 
 // Gets a scene and associated choices by ID
-var getScene = function(id, cb) {
+var getScene = function(id, user, cb) {
     var scene;
+    console.log("Getting scene:", id);
+    // Sets the user's current scene to this one
+    user.currentGame._rel.current_scene = id;
+    User.save(user, function(err, data){
+        if (err) throw err;
+        console.log("Updated user", data.username);
+    });
     // Gets the current scene, then updates any data as necessary
     Game.scene.read(id, function(err, data){
         if (err) throw err;
         // Checks if there's any text to be shown/hide/replaced in the scene; returns updated scene
-        getData(data, function(s){
+        getData(data, user, function(s){
             scene = s;
             console.log(scene);
-            // If there aren't any choices, create a Continue button that connects to the next scene
+            // If there aren't any choices create a Continue button that connects to the next scene
             if (!scene.choices) {
                 db.relationships(id, 'out', 'LEADS_TO', function(err, rel){
                     if (err) throw err;
-                    scene.choices = [{title: 'Continue', id: rel[0].end, direct: true}];
+                    if (rel.length > 0) {
+                        scene.choices = [{title: 'Continue', id: rel[0].end, direct: true}];
+                    } else {
+                        scene.choices = [{title: 'Play Again', id: user.currentGame.first_scene.id, direct: true}];
+                    }
                     cb(scene);
                 });
             }
@@ -102,7 +113,7 @@ var makeChoice = function(id, user, cb) {
         if (choice.scenes) {
             cb({id: choice.scenes[0].id});
         } else {
-            cb({id: 7});
+            cb({id: user.currentGame.first_scene.id});
         }
     });
 };
@@ -122,9 +133,9 @@ router.get('/scene/:id', function(req, res, next) {
     if (req.isAuthenticated()) {
         var scene = req.params.id;
         if (scene == 'undefined' || !scene) {
-            scene = req.user.currentGame._rel.current_scene;
+            scene = req.user.currentGame._rel.current_scene || req.user.currentGame.first_scene.id;
         }
-        getScene(scene, function(data){
+        getScene(scene, req.user, function(data){
             // Send down the requested scene
             res.send(data);
         });

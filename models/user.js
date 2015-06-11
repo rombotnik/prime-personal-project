@@ -1,5 +1,4 @@
-// TODO: Update URL to point to new database
-var seraphUrl = require('url').parse('http://app37253375:kxv7jzEcAWTYeLyyzuqs@app37253375.sb05.stations.graphenedb.com:24789');
+var seraphUrl = require('url').parse('http://app37458637:gp9yfrsaA1uQD6a5pMZm@app37458637.sb05.stations.graphenedb.com:24789');
 var db = require("seraph")({
     server: seraphUrl.protocol + '//' + seraphUrl.host,
     user: seraphUrl.auth.split(':')[0],

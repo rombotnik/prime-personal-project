@@ -37,7 +37,7 @@ app.use(session({
     key: 'user',
     resave: true,
     saveUninitialized: false,
-    cookie: {maxAge: 60000, secure: false}
+    cookie: {maxAge: 60000000000, secure: false}
 }));
 
 // Initialize passport and session
@@ -118,6 +118,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

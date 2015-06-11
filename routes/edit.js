@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var express = require('express');
-var router = express.Router();
-
-var seraphUrl = require('url').parse('http://app37253375:kxv7jzEcAWTYeLyyzuqs@app37253375.sb05.stations.graphenedb.com:24789');
+var seraphUrl = require('url').parse('http://app37458637:gp9yfrsaA1uQD6a5pMZm@app37458637.sb05.stations.graphenedb.com:24789');
 var db = require("seraph")({
     server: seraphUrl.protocol + '//' + seraphUrl.host,
     user: seraphUrl.auth.split(':')[0],
@@ -31,19 +28,19 @@ router.get('/', function(req, res, next) {
 });
 
 // GET scene
-router.get('/scene/*', function(req, res, next) {
-    try {
-        getScene(req.params[0], function(data){
-            // Send down the requested scene
-            res.send(data);
-        });
-    }
-    catch(err) {
-        console.log(err);
-        getScene(7, function(data){
-            res.send(data);
-        });
-    }
-});
+//router.get('/scene/*', function(req, res, next) {
+//    try {
+//        getScene(req.params[0], function(data){
+//            // Send down the requested scene
+//            res.send(data);
+//        });
+//    }
+//    catch(err) {
+//        console.log(err);
+//        getScene(req.user.curren, function(data){
+//            res.send(data);
+//        });
+//    }
+//});
 
 module.exports = router;
