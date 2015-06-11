@@ -1,7 +1,14 @@
 var app = angular.module('app', []);
 
 app.controller('PlayController', ['$scope', '$http', function($scope, $http){
+    $scope.game = {};
     $scope.scene = {};
+    $scope.user = {};
+
+    $http.get('/users/me').success(function (user) {
+        console.log("Logged in user: ", user);
+        $scope.user = user;
+    });
 
     $scope.getScene = function(id) {
         $http.get('/play/scene/' + id).success(function(data){
@@ -11,7 +18,7 @@ app.controller('PlayController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.makeChoice = function(id) {
-        $http.post('/play/choice/' + id).success(function(data){
+        $http.post('/play/choice/' + (id || '')).success(function(data){
             console.log(data);
             $scope.getScene(data.id);
         });
@@ -26,11 +33,7 @@ app.controller('PlayController', ['$scope', '$http', function($scope, $http){
         }
     };
 
-    $scope.test = function(thing){
-        console.log(thing);
-    };
-
-    $scope.getScene(7);
+    $scope.getScene();
 }]);
 
 app.controller('EditController', ['$scope', '$http', function($scope, $http){

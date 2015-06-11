@@ -8,7 +8,8 @@ var db = require("seraph")({
     pass: seraphUrl.auth.split(':')[1]
 });
 
-var game = require('../models/game');
+var Game = require('../models/game');
+var User = require('../models/user');
 
 /*          Game-specific Functions          */
 
@@ -49,7 +50,7 @@ var imp = {
 var getScene = function(id, cb) {
     var scene;
     // Gets the current scene, then updates any data as necessary
-    game.scene.read(id, function(err, data){
+    Game.scene.read(id, function(err, data){
         if (err) throw err;
         // Checks if there's any text to be shown/hide/replaced in the scene; returns updated scene
         getData(data, function(s){
@@ -57,7 +58,7 @@ var getScene = function(id, cb) {
             console.log(scene);
             // If there aren't any choices, create a Continue button that connects to the next scene
             if (!scene.choices) {
-                db.relationships(id, 'out', 'LEADS TO', function(err, rel){
+                db.relationships(id, 'out', 'LEADS_TO', function(err, rel){
                     if (err) throw err;
                     scene.choices = [{title: 'Continue', id: rel[0].end, direct: true}];
                     cb(scene);
@@ -71,16 +72,23 @@ var getScene = function(id, cb) {
 };
 
 // Updates the value of a variable in the DB based on the choice made
-var makeChoice = function(id, cb) {
-    game.choice.read(id, function(err, choice){
+var makeChoice = function(id, user, cb) {
+    Game.choice.read(id, function(err, choice){
         if (err) throw err;
 
         if (choice.statistics) {
+            // Loop through stats that the choice affects
             choice.statistics.forEach(function (stat) {
+                // Do something based on the choice mode
                 switch (stat._rel.mode) {
                     case 'set':
                     default:
-                        db.save({id: stat.id}, 'value', stat._rel.value, function (err, node) {
+                        // Set the relationship of the current user to the user's current game to have the appropriate value for each statistic
+                        user.currentGame._rel[stat.name] = stat._rel.value;
+                        console.log("Statistic object", stat);
+                        // Save the user
+                        console.log("Attempting to save user", user);
+                        User.save(user, function (err, node) {
                             if (err) throw err;
                             console.log("Updated node:", node);
                         });
@@ -102,29 +110,47 @@ var makeChoice = function(id, cb) {
 /*          Router Functions          */
 
 router.get('/', function(req, res, next) {
-    res.render('play', { title: 'Play' });
+    if (req.isAuthenticated()) {
+        res.render('play', { title: 'Play' });
+    }
+    else {
+        res.redirect('/users/login');
+    }
 });
 
-router.get('/scene/*', function(req, res, next) {
-    try {
-        getScene(req.params[0], function(data){
+router.get('/scene/:id', function(req, res, next) {
+    if (req.isAuthenticated()) {
+        var scene = req.params.id;
+        if (scene == 'undefined' || !scene) {
+            scene = req.user.currentGame._rel.current_scene;
+        }
+        getScene(scene, function(data){
             // Send down the requested scene
             res.send(data);
         });
+    } else {
+        res.redirect('/users/login');
     }
-    catch(err) {
-        console.log(err);
-        getScene(7, function(data){
+});
+
+router.get('/game/:id', function(req, res, next) {
+    if (req.isAuthenticated()) {
+        Game.game.read(req.params.id, function(err, data){
+            if (err) next(err);
             res.send(data);
         });
     }
 });
 
 router.post('/choice/:id', function(req, res, next){
-    makeChoice(req.params.id, function(data){
-        // Send down the ID of the next scene after processing the choice
-        res.send(data);
-    });
+    if (req.isAuthenticated()){
+        makeChoice(req.params.id, req.user, function(data){
+            // Send down the ID of the next scene after processing the choice
+            res.send(data);
+        });
+    } else {
+        res.redirect('/users/login');
+    }
 });
 
 module.exports = router;

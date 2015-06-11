@@ -8,6 +8,15 @@ router.get('/login', function (req, res, next) {
     res.render('login', {title: 'Log In'});
 });
 
+router.get('/me', function (req, res, next) {
+    if (req.isAuthenticated()) {
+        console.log(req.user);
+        res.send(req.user);
+    } else {
+        res.redirect('/users/login');
+    }
+});
+
 router.get('/register', function (req, res, next) {
     res.render('register', {title: 'Register'});
 });

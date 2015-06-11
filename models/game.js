@@ -28,22 +28,22 @@ statistic.schema = {
 
 game.schema = {
     title: {type: String, required: true},
-    description: {type: String, required: true},
-    category: {type: String, required: true},
-    author: {type: String, required: true},
+    description: {type: String},
+    category: {type: String},
+    author: {type: String},
     template: {type: Boolean, default: false}
 };
 
 // Composition: the scene contains an array of choices; each choice contains an array of scenes (without choices) that they lead to -- this reduces a lot of overhead in the server trying to traverse relationships.
 scene.compose(choice, 'choices', 'CONTAINS', {many: true});
 scene.compose(statistic, 'statistics', 'REFERENCES', {many: true});
-choice.compose(scene, 'scenes', 'LEADS TO', {many: true});
+choice.compose(scene, 'scenes', 'LEADS_TO', {many: true});
 choice.compose(statistic, 'statistics', 'AFFECTS', {many: true});
 
 // Composition: the game has an initial scene, then all the scenes and statistics
 //game.compose(scene, 'scenes', 'CONTAINS', {many: true});
 //game.compose(statistic, 'statistics', 'CONTAINS', {many: true});
-game.compose(scene, 'first_scene', 'LEADS TO');
+game.compose(scene, 'first_scene', 'LEADS_TO');
 
 module.exports.choice = choice;
 module.exports.scene = scene;
