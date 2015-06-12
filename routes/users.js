@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var bcrypt = require('bcrypt');
 var User = require('../models/user');
+var logout = require('express-passport-logout');
 
 var seraphUrl = require('url').parse('http://app37458637:gp9yfrsaA1uQD6a5pMZm@app37458637.sb05.stations.graphenedb.com:24789');
 var db = require("seraph")({
@@ -14,6 +15,8 @@ var db = require("seraph")({
 router.get('/login', function (req, res, next) {
     res.render('login', {title: 'Log In'});
 });
+
+router.get('/logout', logout());
 
 router.get('/me', function (req, res, next) {
     if (req.isAuthenticated()) {
