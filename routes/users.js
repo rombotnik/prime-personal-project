@@ -4,6 +4,13 @@ var passport = require('passport');
 var bcrypt = require('bcrypt');
 var User = require('../models/user');
 
+var seraphUrl = require('url').parse('http://app37458637:gp9yfrsaA1uQD6a5pMZm@app37458637.sb05.stations.graphenedb.com:24789');
+var db = require("seraph")({
+    server: seraphUrl.protocol + '//' + seraphUrl.host,
+    user: seraphUrl.auth.split(':')[0],
+    pass: seraphUrl.auth.split(':')[1]
+});
+
 router.get('/login', function (req, res, next) {
     res.render('login', {title: 'Log In'});
 });
@@ -36,6 +43,10 @@ router.post('/register', function (req, res, next) {
             User.save({username: req.body.username, password: req.body.password, email: req.body.email}, function(err, node){
                 if (err) return next(err);
                 console.log('Created new user: ', node.username);
+                db.relate(node, 'PLAYING', 2, function(err, rel) {
+                    if (err) return next(err);
+                    console.log('New user is now playing!');
+                });
                 res.redirect('/users/login');
             });
         });
