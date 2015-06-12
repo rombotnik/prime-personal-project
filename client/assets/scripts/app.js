@@ -18,7 +18,7 @@ app.controller('PlayController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.makeChoice = function(id) {
-        $http.post('/play/choice/' + (id || '')).success(function(data){
+        $http.post('/play/choice/' + id).success(function(data){
             console.log(data);
             $scope.getScene(data.id);
         });

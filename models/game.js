@@ -22,7 +22,6 @@ scene.schema = {
 
 statistic.schema = {
     name: {type: String, required: true},
-    value: {required: true},
     display: {type: Boolean, default: false}
 };
 

@@ -3,25 +3,25 @@ extends layout
 block content
     main.container(ng-controller='PlayController')
         div.row
-            div.col-sm-3
-                h2 Sidebar
-                ul.list-unstyled
-                    li
-                        strong {{user.username}}
-                    li
-                        strong Hipster Level:
-                        |  Poseur
-                hr
-                ul.nav.nav-pills.nav-stacked
-                    li
-                        a Character
-                    li
-                        a Inventory
-                    li
-                        a
-                            i.glyphicon.glyphicon-play-circle
-                            |  Current Scene
-            div.col-sm-9
+            //div.col-sm-3
+            //    h2 Sidebar
+            //    ul.list-unstyled
+            //        li
+            //            strong {{user.username}}
+            //        li
+            //            strong Hipster Level:
+            //            |  Poseur
+            //    hr
+            //    ul.nav.nav-pills.nav-stacked
+            //        li
+            //            a Character
+            //        li
+            //            a Inventory
+            //        li
+            //            a
+            //                i.glyphicon.glyphicon-play-circle
+            //                |  Current Scene
+            div.col-sm-10.col-sm-offset-1
                 h1 {{scene.title}}
                 div.scene-content {{scene.content}}
                 footer

@@ -84,6 +84,7 @@ var getScene = function(id, user, cb) {
 
 // Updates the value of a variable in the DB based on the choice made
 var makeChoice = function(id, user, cb) {
+    console.log("User ", user, "made choice: ", id);
     Game.choice.read(id, function(err, choice){
         if (err) throw err;
 
@@ -102,6 +103,12 @@ var makeChoice = function(id, user, cb) {
                         User.save(user, function (err, node) {
                             if (err) throw err;
                             console.log("Updated node:", node);
+                            // Finally, CB after saving the user
+                            if (choice.scenes) {
+                                cb({id: choice.scenes[0].id});
+                            } else {
+                                cb({id: user.currentGame.first_scene.id});
+                            }
                         });
                         break;
                 }
@@ -110,10 +117,12 @@ var makeChoice = function(id, user, cb) {
 
         // If there's a scene linked to a choice: send back the ID of that scene - otherwise, send back 7 (the root scene, hardcoded)
         // TODO: Account for last scenes / finishing a story
-        if (choice.scenes) {
-            cb({id: choice.scenes[0].id});
-        } else {
-            cb({id: user.currentGame.first_scene.id});
+        else {
+            if (choice.scenes) {
+                cb({id: choice.scenes[0].id});
+            } else {
+                cb({id: user.currentGame.first_scene.id});
+            }
         }
     });
 };
