@@ -9,11 +9,13 @@ html(ng-app='app')
     body
         nav.navbar.navbar-default.navbar-static-top
             div.container
-                a.navbar-brand(href='/') SCRAWLED
+                a.navbar-brand SCRAWLED
                 ul.nav.navbar-nav
                     li
                         a(href='/play') Play
                 ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href='/about') About
                     li
                         a(href='/users/logout?returnTo=/users/login') Log Out
         block content
