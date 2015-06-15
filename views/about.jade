@@ -2,8 +2,18 @@ extends layout
 block content
     main.container
         div.row
-            div.col-xs-6.col-xs-offset-3.text-center.well
-                h3 About this app
-                blockquote I made this little app in Neo4j, Node, and Angular. It's a small choose-your-own-adventure game framework running on a graph database. I hope to expand it further in the future, with a way for users to create and share their own games using this framework.
-                h4 - Rom Stevens -
-                a(href='mailto:romney.stevens@gmail.com') romney.stevens@gmail.com
+            div.col-xs-4
+                div.well
+                    h3 About this app
+                    p I made this little app in Neo4j, Node, and Angular. It's a small choose-your-own-adventure game framework running on a graph database. I hope to expand it further in the future, with a way for users to create and share their own games using this framework.
+                    h3 Contact me
+                    p Rom Stevens
+                    a(href='mailto:romney.stevens@gmail.com') romney.stevens@gmail.com
+                    p (612) 999 - 5860
+            div.col-xs-8
+                div.well
+                    h3 Database structure
+                    img(src='assets/images/app.png')
+                    p The game framework consists of Scenes, Choices, and Statistics.
+                    p Scenes (red) "contain" Choices (purple). Choices "affect" Statistics (pink) and "lead to" Scenes. Scenes "reference" Statistics, and can also "lead to" other Scenes. These relationships together create the rough framework that the game follows.
+                    p User choices are stored in a relationship, "playing," to the Game object (not pictured).
