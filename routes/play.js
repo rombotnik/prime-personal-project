@@ -53,12 +53,12 @@ var getScene = function(id, user, cb) {
     // Sets the user's current scene to this one
     user.currentGame._rel.current_scene = id;
     User.save(user, function(err, data){
-        if (err) throw err;
+        if (err) next(err);
         console.log("Updated user", data.username);
     });
     // Gets the current scene, then updates any data as necessary
     Game.scene.read(id, function(err, data){
-        if (err) throw err;
+        if (err) next(err);
         // Checks if there's any text to be shown/hide/replaced in the scene; returns updated scene
         getData(data, user, function(s){
             scene = s;
@@ -86,7 +86,7 @@ var getScene = function(id, user, cb) {
 var makeChoice = function(id, user, cb) {
     console.log("User ", user, "made choice: ", id);
     Game.choice.read(id, function(err, choice){
-        if (err) throw err;
+        if (err) next(err);
 
         if (choice.statistics) {
             // Loop through stats that the choice affects
