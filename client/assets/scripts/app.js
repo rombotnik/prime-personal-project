@@ -1,4 +1,25 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngMaterial']);
+
+app.controller('MainController', ['$scope', '$http', '$mdSidenav', '$mdUtil', function($scope, $http, $mdSidenav, $mdUtil){
+    $scope.toggleLeft = buildToggler('left');
+
+    $scope.closeLeft = function () {
+        $mdSidenav('left').close()
+            .then(function () {
+                $log.debug("close LEFT is done");
+            });
+    };
+
+    function buildToggler(navID) {
+        return $mdUtil.debounce(function(){
+            $mdSidenav(navID)
+                .toggle()
+                .then(function () {
+                    $log.debug("toggle " + navID + " is done");
+                });
+        },300);
+    }
+}]);
 
 app.controller('PlayController', ['$scope', '$http', function($scope, $http){
     $scope.game = {};

@@ -1,21 +1,18 @@
 extends layout
 block content
-    main.container
-        div.row
-            div.col-sm-4.col-sm-offset-4
-                form(method='post' action='/users/login')
-                    h1 Welcome back.
-                    div.form-group
-                        label Username
-                        input.form-control(type='text' name='username' placeholder='Username' required)
-                    div.form-group
-                        label Password
-                        input.form-control(type='password' name='password' placeholder='Password' required)
-                    //p
-                    //    input(type='checkbox')
-                    //    |  Remember me
-                    ul.list-inline
-                        li
-                            input(type='submit' value='LOG IN').btn.btn-primary
-                        li
-                            a.btn.btn-default.btn-sm(href='/users/register') REGISTER
+    form(method='post' action='/users/login' layout='column' flex='50' offset='25')
+        header
+            h1 Welcome back.
+
+        section
+            md-input-container
+                label Username
+                input(name='username' type='text' required)
+
+            md-input-container
+                label Password
+                input(name='password' type='password' required)
+
+        footer(layout-align='center center')
+            md-button.md-raised.md-primary Log In
+            md-button(href='/users/register') Register

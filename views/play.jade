@@ -1,30 +1,23 @@
 extends layout
 
 block content
-    main.container(ng-controller='PlayController')
-        div.row
-            //div.col-sm-3
-            //    h2 Sidebar
-            //    ul.list-unstyled
-            //        li
-            //            strong {{user.username}}
-            //        li
-            //            strong Hipster Level:
-            //            |  Poseur
-            //    hr
-            //    ul.nav.nav-pills.nav-stacked
-            //        li
-            //            a Character
-            //        li
-            //            a Inventory
-            //        li
-            //            a
-            //                i.glyphicon.glyphicon-play-circle
-            //                |  Current Scene
-            div.col-sm-10.col-sm-offset-1
-                h1 {{scene.title}}
-                div.scene-content {{scene.content}}
-                footer
-                    ul.list-inline
-                        li(ng-repeat='choice in scene.choices')
-                            button.btn.btn-primary.btn-sm(ng-click='continue(choice)') {{choice.title}}
+    div(ng-controller='PlayController' layout='row' layout-sm='column' flex layout-margin)
+        md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left' md-is-locked-open='$mdMedia("gt-md")')
+            md-content(layout-padding flex layout='column')
+                h3.align-center Game Name
+                md-button.align-left
+                    i.fa.fa-user
+                    span  Character
+                md-button.align-left
+                    i.fa.fa-suitcase
+                    span  Inventory
+                md-button.md-raised.md-primary.align-left(ng-click='closeLeft()' hide-gt-md)
+                    i.fa.fa-times
+                    span  Close
+        div(layout-padding flex)
+            md-button(ng-click='toggleLeft()' hide-gt-md) Game Menu
+            h2 {{scene.title}}
+            div
+                p {{scene.content}}
+            footer(flex layout='row' layout-sm='column')
+                md-button(ng-repeat='choice in scene.choices' ng-click='continue(choice)') {{choice.title}}
