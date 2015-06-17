@@ -1,27 +1,22 @@
 extends layout
 block content
-    main.container
-        div.row
-            div.col-sm-4.col-sm-offset-4
-                form(method='post' action='/users/register')
-                    h1 Hi there.
-                    div.form-group
-                        label Username
-                        input.form-control(type='text' placeholder='Username' name='username' required)
-                    div.form-group
-                        label Password
-                        input.form-control(type='password' placeholder='Password' name='password' required)
-                    div.form-group
-                        label E-mail
-                        input.form-control(type='email' placeholder='E-mail' name='email' required)
-                    p
-                        input(type='checkbox' required)
-                        |  I am 13 years or older
-                    p
-                        input(type='checkbox' required)
-                        |  I agree to the Terms of Service
-                    ul.list-inline
-                        li
-                            input(type='submit' value='REGISTER').btn.btn-primary
-                        li
-                            a.btn.btn-default.btn-sm(href='/users/login') GO BACK
+    form(method='post' action='/users/register' layout='column' flex='50' offset='25')
+        header
+            h1 Register
+
+        section
+            md-input-container
+                label Username
+                input(name='username' type='text' required)
+
+            md-input-container
+                label Password
+                input(name='password' type='password' required)
+
+            md-input-container
+                label E-mail
+                input(name='email' type='email' required)
+
+        footer(layout-align='center center')
+            md-button.md-raised.md-primary Register
+            md-button(href='/users/login') Go back

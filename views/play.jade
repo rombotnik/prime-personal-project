@@ -1,23 +1,10 @@
 extends layout
 
 block content
-    div(ng-controller='PlayController' layout='row' layout-sm='column' flex layout-margin)
-        md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left' md-is-locked-open='$mdMedia("gt-md")')
-            md-content(layout-padding flex layout='column')
-                h3.align-center Game Name
-                md-button.align-left
-                    i.fa.fa-user
-                    span  Character
-                md-button.align-left
-                    i.fa.fa-suitcase
-                    span  Inventory
-                md-button.md-raised.md-primary.align-left(ng-click='closeLeft()' hide-gt-md)
-                    i.fa.fa-times
-                    span  Close
-        div(layout-padding flex)
-            md-button(ng-click='toggleLeft()' hide-gt-md) Game Menu
+    div(ng-controller='PlayController' layout='row' layout-align='center' flex)
+        div(flex-gt-md='70' flex='85' flex-sm='100' layout-padding layout-margin layout-align='top center')
             h2 {{scene.title}}
             div
                 p {{scene.content}}
             footer(flex layout='row' layout-sm='column')
-                md-button(ng-repeat='choice in scene.choices' ng-click='continue(choice)') {{choice.title}}
+                md-button.align-left(ng-repeat='choice in scene.choices' ng-click='continue(choice)') {{choice.title}}
