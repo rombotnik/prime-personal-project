@@ -1,10 +1,9 @@
-html {
-  min-height: 100%; }
+html, body {
+  overflow: auto; }
 
 body {
   background: #212121 url(../images/dark_wall.png) repeat;
-  color: #f5f5f5;
-  min-height: 100%; }
+  color: #f5f5f5; }
 
 .wrapper {
   padding: 0 1rem 10rem; }
@@ -22,9 +21,6 @@ img {
   position: fixed;
   bottom: 2rem;
   left: 2rem; }
-
-md-bottom-sheet {
-  background: #1b1b1b; }
 
 md-sidenav {
   background: #1b1b1b; }

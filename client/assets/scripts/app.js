@@ -2,7 +2,7 @@ var app = angular.module('app', ['ngMaterial'])
 
     .config(['$mdThemingProvider', function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
-            .primaryPalette('purple').dark();
+            .primaryPalette('deep-purple').accentPalette('purple').dark();
 }]);
 
 app.controller('MainController', ['$scope', '$http', '$mdSidenav', '$mdUtil', function($scope, $http, $mdSidenav, $mdUtil){

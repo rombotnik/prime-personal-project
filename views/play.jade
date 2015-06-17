@@ -1,8 +1,14 @@
 extends layout
 
+block navigation
+    h3.align-center Fantasy Game
+    md-button.align-left
+        i.fa.fa-user
+        span  Character
+
 block content
     div(ng-controller='PlayController' layout='row' layout-align='center' flex)
-        div(flex-gt-md='70' flex='85' flex-sm='100' layout-padding layout-margin layout-align='top center')
+        div(flex-gt-lg='50' flex='75' flex-sm='95' layout-padding layout-margin layout-align='top center')
             h2 {{scene.title}}
             div
                 p {{scene.content}}
