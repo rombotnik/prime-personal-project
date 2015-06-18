@@ -15,17 +15,23 @@ img {
   max-width: 100%;
 }
 
-.align-left {
-  text-align: left;
-}
-
-.align-center {
-  text-align: center;
-}
-.main-nav {
+.nav-main {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
+}
+
+.nav-btn {
+  width: 95%;
+  text-align: left;
+}
+
+.play-btn:hover {
+  color: #9575cd;
+}
+
+h1, h2, h3 {
+  color: #673ab7;
 }
 
 md-sidenav {
@@ -34,4 +40,14 @@ md-sidenav {
 
 md-content {
   background: none;
+}
+
+.align-center {
+  text-align: center;
+}
+
+@media(max-width: 600px) {
+  .play-btn {
+    text-align: left;
+  }
 }

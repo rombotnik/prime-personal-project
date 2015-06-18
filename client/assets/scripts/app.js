@@ -31,21 +31,24 @@ app.controller('PlayController', ['$scope', '$http', function($scope, $http){
     $scope.scene = {};
     $scope.user = {};
 
+    $scope.loading = false;
+
     $http.get('/users/me').success(function (user) {
         console.log("Logged in user: ", user);
         $scope.user = user;
     });
 
     $scope.getScene = function(id) {
+        $scope.loading = true;
         $http.get('/play/scene/' + id).success(function(data){
-            console.log(data);
+            $scope.loading = false;
             $scope.scene = data;
         });
     };
 
     $scope.makeChoice = function(id) {
+        $scope.loading = true;
         $http.post('/play/choice/' + id).success(function(data){
-            console.log(data);
             $scope.getScene(data.id);
         });
     };
