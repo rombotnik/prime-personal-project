@@ -13,6 +13,6 @@ block content
             div
                 p {{scene.content}}
             footer(flex layout='row' layout-sm='column')
-                md-button.play-btn.md-primary(ng-repeat='choice in scene.choices' ng-click='continue(choice)') {{choice.title}}
+                md-button.play-btn.md-primary.md-raised(ng-repeat='choice in scene.choices' ng-click='continue(choice)') {{choice.title}}
             div(ng-show='loading')
                 md-progress-circular(md-mode='indeterminate').md-primary
